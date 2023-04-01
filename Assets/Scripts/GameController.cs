@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 public class GameController : MonoBehaviour {
 
     [System.Serializable] public class Player
     {
         public Image panel;
-        public Text text;
+        public TextMeshProUGUI text;
         public Button button;
         public Sprite playerImage;
     }
@@ -23,7 +24,7 @@ public class GameController : MonoBehaviour {
     public PlayerColor inactivePlayerColor;
     public GridSpace[] gridSpaceList;
     public GameObject gameOverPanel;
-    public Text gameOverText;
+    public TextMeshProUGUI gameOverText;
     public GameObject restartButton;
     public GameObject startInfo;
 
@@ -38,7 +39,7 @@ public class GameController : MonoBehaviour {
     }
 
     public Sprite GetPlayerSideImage() {
-        if (playerSide == "X") {
+        if (playerSide == "Humans") {
             return playerX.playerImage;
         } else {
             return playerO.playerImage;
@@ -48,7 +49,7 @@ public class GameController : MonoBehaviour {
     public void SetStartingSide (string startingSide)
     {
         playerSide = startingSide;
-        if (playerSide == "X")
+        if (playerSide == "Humans")
         {
             SetPlayerColors(playerX, playerO);
         } else
@@ -122,8 +123,8 @@ public class GameController : MonoBehaviour {
 
     void ChangeSides ()
     {
-        playerSide = (playerSide == "X") ? "O" : "X";
-        if (playerSide == "X")
+        playerSide = (playerSide == "Humans") ? "Aliens" : "Humans";
+        if (playerSide == "Humans")
         {
             SetPlayerColors(playerX, playerO);
         }
@@ -136,9 +137,9 @@ public class GameController : MonoBehaviour {
     void SetPlayerColors (Player newPlayer, Player oldPlayer)
     {
         newPlayer.panel.color = activePlayerColor.panelColor;
-        newPlayer.text.color = activePlayerColor.textColor;
+        //newPlayer.text.color = activePlayerColor.textColor;
         oldPlayer.panel.color = inactivePlayerColor.panelColor;
-        oldPlayer.text.color = inactivePlayerColor.textColor;
+        //oldPlayer.text.color = inactivePlayerColor.textColor;
     }
     void GameOver (string winningPlayer)
     {
@@ -192,8 +193,8 @@ public class GameController : MonoBehaviour {
     void SetPlayerColorsInactive ()
     {
         playerX.panel.color = inactivePlayerColor.panelColor;
-        playerX.text.color = inactivePlayerColor.textColor;
+        //playerX.text.color = inactivePlayerColor.textColor;
         playerO.panel.color = inactivePlayerColor.panelColor;
-        playerO.text.color = inactivePlayerColor.textColor;
+        //playerO.text.color = inactivePlayerColor.textColor;
     }
 }
