@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 public class GridSpace : MonoBehaviour {
     public Button button;
-    public Text buttonText;
+    public string text;
+    public Image image;
     private GameController gameController;
     public void SetGameControllerReference (GameController controller)
     {
@@ -11,8 +12,17 @@ public class GridSpace : MonoBehaviour {
     }
     public void SetSpace ()
     {
-        buttonText.text = gameController.GetPlayerSide();
+        text = gameController.GetPlayerSide();
         button.interactable = false;
+
+        image.sprite = gameController.GetPlayerSideImage();
+        image.color = Color.white;
         gameController.EndTurn();
     }
+
+    public void ResetGridSpace() {
+        text = "";
+        image.color = Color.clear;
+    }
+
 }
