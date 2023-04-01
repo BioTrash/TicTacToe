@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour {
             SetPlayerColorsInactive();
         } else
         {
-            SetGameOverText(winningPlayer + " Wins!");
+            SetGameOverText(winningPlayer + " Win!");
         }
         restartButton.SetActive(true);
     }
